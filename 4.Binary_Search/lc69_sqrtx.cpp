@@ -66,3 +66,47 @@ int main() {
     cout << "Hello, World!" << endl;
     return 0;
 }
+
+//Sqrt with precision
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// double mySqrt(int x, int p) {
+//     double s = 0, e = x;
+
+//     // Handle edge cases for 0 and 1
+//     if (x == 0 || x == 1) return static_cast<double>(x);
+
+//     double ans = 0;
+
+//     // Perform binary search
+//     while (e - s > pow(10, -p)) {
+//         double mid = s + (e - s) / 2;
+
+//         // If mid*mid equals x, return mid
+//         if (mid * mid == x) return mid;
+
+//         // Adjust the search range based on mid*mid
+//         if (mid * mid > x) {
+//             e = mid; // Search in the left half
+//         } else {
+//             ans = mid; // Update the closest approximation
+//             s = mid;   // Search in the right half
+//         }
+//     }
+
+//     return ans;
+// }
+
+// int main() {
+// 	// your code goes here
+// 	 int x = 3, p = 2;
+
+//     // Calculate square root
+//     double result = mySqrt(x, p);
+
+//     // Output the result with p decimal places
+//     cout << fixed << setprecision(p) << result << endl;
+// 	return 0;
+// }
