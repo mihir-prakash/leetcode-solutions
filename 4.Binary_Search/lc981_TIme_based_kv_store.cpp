@@ -31,7 +31,6 @@ public:
     
     string get(string key, int timestamp) {
         // we have to find value of t <= timestamp
-       
         auto &v = m[key]; //v is a reference to array to avoid copying the array (O(n) time)
         //Hence do a BS on this vector v to find t <= timestamp
         int n= v.size();
