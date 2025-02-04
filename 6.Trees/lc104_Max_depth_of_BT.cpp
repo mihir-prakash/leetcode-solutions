@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <queue>
 #include <algorithm>
 #include <map>
 #include <set>
@@ -10,8 +11,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
-#include <queue>
-
 
 using namespace std;
 /**
@@ -35,24 +34,8 @@ using namespace std;
  };
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-    if(root==NULL)return {};
-    vector<vector<int>>res;
-    queue<TreeNode*> q;
-    q.push(root);
-    while(!q.empty()){
-    vector<int>level_wise;    
-    int sz = q.size();    
-    for(int i=0; i<sz; i++){
-        TreeNode * candidate = q.front();
-        if(candidate->left)q.push(candidate->left);
-        if(candidate->right)q.push(candidate->right);
-        level_wise.push_back(candidate->val); 
-        q.pop();      
-    }
-    res.push_back(level_wise);        
-    }
-    return res;    
+    int maxDepth(TreeNode* root) {
+        return root==NULL?0: max(maxDepth(root->left), maxDepth(root->right))+1;
     }
 };
 int main() {
