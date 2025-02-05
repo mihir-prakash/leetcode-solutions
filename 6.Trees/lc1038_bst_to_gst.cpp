@@ -36,6 +36,7 @@ class Solution {
     int sum=0;
 public:
     void bstToGstHelper(TreeNode* root){
+        //I trust this function will update the nodes of the subtree & give me sum
         //base case
         if(root==NULL)return;
         //rst
