@@ -33,18 +33,26 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+
 class Solution {
 public:
-    bool isSameTreeHelper(TreeNode* &p, TreeNode* &q) {
-        //do a dfs and check for each node ->compare val of both. if not same return false else keep traversing.
-        if(p==NULL && q==NULL)return true; //if both are null
-        if(!p || !q)return false; //if one is null and one is not
-        
-        if(p->val != q->val)return false;      //if the values are not same
-        return isSameTreeHelper(p->left, q->left) && isSameTreeHelper(p->right, q->right);
+    bool isSameTree(TreeNode *p, TreeNode *q){
+        //base case
+        if(!p && !q)return true;
+        if(!p || !q)return false;
+        //dfs
+        if(p->val != q->val)return false;
+        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
     }
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        return isSameTreeHelper(p,q);
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        //do a dfs and for each node check if it has the same subtree as subRoot
+
+        if(root==NULL) return false;
+        int left = isSameTree(root->left, subRoot);
+        int right = isSameTree(root->right, subRoot);
+        if(left || right)return true;
+        if(isSameTree(root, subRoot))return true;
+        return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
     }
 };
 int main() {
